@@ -42,13 +42,15 @@
 
         nav a:hover {
             color: #000000; 
-        } 
+        }
 
         .container {
             padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: none; /* Domyślnie ukryte */
+        }
+
+        .active {
+            display: block; /* Tylko aktywna sekcja będzie widoczna */
         }
 
         .product {
@@ -75,22 +77,20 @@
             font-size: 1.2em;
         }
 
-        .product button {
-            background-color: #00ff00; 
-            color: #ffffff; 
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .product button:hover {
+        footer {
             background-color: #000000; 
-            color: #ffffff; 
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
 
-         #kontakt {
+        footer p {
+            color: #00ff00; 
+        }
+
+        #kontakt {
             background-color: #000000; 
             color: #ffffff;
             padding: 50px 20px;
@@ -105,19 +105,6 @@
         #kontakt p {
             font-size: 1.2em;
         }
-
-        footer {
-            background-color: #000000; 
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        footer p {
-            color: #00ff00; 
-        }
     </style>
 </head>
 <body>
@@ -127,36 +114,64 @@
 </header>
 
 <nav>
-    <a href="#nowosci">Nowości</a>
-    <a href="#pilkarzyki">Dla Piłkarzyków</a>
-    <a href="#mezczyzni">Dla Mężczyzn</a>
-    <a href="#kontakt.html">Kontakt</a>
+    <a href="#" onclick="showSection('nowosci')">Nowości</a>
+    <a href="#" onclick="showSection('pilkarzyki')">Dla Piłkarzyków</a>
+    <a href="#" onclick="showSection('mezczyzni')">Dla Mężczyzn</a>
+    <a href="#" onclick="showSection('kontakt')">Kontakt</a>
 </nav>
-    
-      
-<div class="container">
+
+<div id="nowosci" class="container active">
+    <h2>Witamy na naszej stronie!</h2>
+    <p>Oferujemy najlepsze produkty modowe.</p>
+</div>
+
+<div id="pilkarzyki" class="container">
+    <h2>Nasze Produkty</h2>
     <div class="product">
         <img src="https://i.imgur.com/1kLhNYb.png" alt="Koszulka Arsenal">
         <h2>Koszulka Arsenal</h2>
         <p>Cena: 99,99 PLN</p>
     </div>
-
     <div class="product">
         <img src="https://i.imgur.com/COnrBPs.png" alt="Koszulka Man Utd">
         <h2>Koszulka Man Utd</h2>
         <p>Cena: 99,99 PLN</p>
     </div>
-
     <div class="product">
-        <img src="https://i.imgur.com/MjB2qKn.png" alt=" Stylowe Spodnie">
+        <img src="https://i.imgur.com/MjB2qKn.png" alt="Stylowe Spodnie">
         <h2>Stylowe Spodnie</h2>
         <p>Cena: 99,99 PLN</p>
-    </div> 
- 
+    </div>
+</div>
+
+<div id="mezczyzni" class="container">
+    <h2>Produkty dla Mężczyzn</h2>
+    <p>Opis produktów dla mężczyzn.</p>
+</div>
+
+<div id="kontakt" class="container">
+    <h2>Dane Kontaktowe</h2>
+    <p>Email: kontakt@vonk.fashion</p>
+    <p>Telefon: +48 123 456 789</p>
+</div>
 
 <footer>
     <p>&copy; 2024 vonk.fashion. Wszystkie prawa zastrzeżone.</p>
 </footer>
 
+<script>
+    function showSection(section) {
+        // Ukryj wszystkie sekcje
+        var sections = document.querySelectorAll('.container');
+        sections.forEach(function(sec) {
+            sec.classList.remove('active');
+        });
+
+        // Pokaż wybraną sekcję
+        document.getElementById(section).classList.add('active');
+    }
+</script>
+
 </body>
 </html>
+
